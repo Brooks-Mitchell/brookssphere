@@ -1,10 +1,14 @@
-"""
-Definition of views.
-"""
+
+from urllib import request
+from django.contrib.auth.forms import UserCreationForm
+from .forms import NewUserForm
+from django.contrib import messages
+from django.shortcuts import  render, redirect
 
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.contrib.auth import login
 
 def home(request):
     """Renders the home page."""
@@ -43,3 +47,17 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+
+def register_request(request):
+    assert isinstance(request, HttpRequest)
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect("main:home")
+        messages.error(request, "Invalid registration")
+    form = NewUserForm()
+    return render(request, 'app/register.html', {"form":form})

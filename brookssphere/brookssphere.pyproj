@@ -43,6 +43,13 @@
     <Compile Include="brookssphere\settings.py" />
     <Compile Include="brookssphere\urls.py" />
     <Compile Include="brookssphere\wsgi.py" />
+    <Compile Include="Profiles\admin.py" />
+    <Compile Include="Profiles\apps.py" />
+    <Compile Include="Profiles\migrations\__init__.py" />
+    <Compile Include="Profiles\models.py" />
+    <Compile Include="Profiles\tests.py" />
+    <Compile Include="Profiles\views.py" />
+    <Compile Include="Profiles\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -55,8 +62,14 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="brookssphere\" />
+    <Folder Include="Profiles\" />
+    <Folder Include="Profiles\migrations\" />
+    <Folder Include="Profiles\templates\" />
+    <Folder Include="Profiles\templates\Profiles\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\register.html" />
+    <Content Include="Profiles\templates\Profiles\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
