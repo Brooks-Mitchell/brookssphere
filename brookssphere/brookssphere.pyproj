@@ -47,6 +47,9 @@
     <Compile Include="Profiles\apps.py" />
     <Compile Include="Profiles\migrations\__init__.py" />
     <Compile Include="Profiles\models.py" />
+    <Compile Include="Profiles\signals.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Profiles\tests.py" />
     <Compile Include="Profiles\views.py" />
     <Compile Include="Profiles\__init__.py" />
@@ -100,11 +103,6 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.html">
-      <SubType>WebBrowser</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="venv\">

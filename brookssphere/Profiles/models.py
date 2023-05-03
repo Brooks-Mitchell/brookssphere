@@ -10,16 +10,3 @@ class Profile(models.Model):
     operations_performed = models.IntegerField(default = 0)
     date_of_birth = models.DateTimeField(auto_now_add=True, blank=True)
 
-# creates a profile linked to a User when a user account is created
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
- # saves the profile when calling User save method
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    try:
-        instance.profile.save()
-    except:
-        print("Superuser has no profile")

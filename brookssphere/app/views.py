@@ -57,7 +57,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("main:home")
+            return redirect("/")
         messages.error(request, "Invalid registration")
     form = NewUserForm()
     return render(request, 'app/register.html', {"form":form})
