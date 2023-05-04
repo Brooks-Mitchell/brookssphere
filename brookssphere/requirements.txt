@@ -13,3 +13,5 @@ setuptools==56.0.0
 sqlparse==0.4.4
 tomli==2.0.1
 tzdata==2023.3
+crispy-bootstrap3==2022.1
+django-crispy-forms==2.0

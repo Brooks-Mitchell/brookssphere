@@ -8,5 +8,6 @@ class Profile(models.Model):
     profile = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_name = models.CharField(max_length=80, default="name") 
     operations_performed = models.IntegerField(default = 0)
+    # TODO - fix this to be MM/DD/YYYY
     date_of_birth = models.DateTimeField(auto_now_add=True, blank=True)
 

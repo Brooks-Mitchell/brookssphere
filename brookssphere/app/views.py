@@ -5,11 +5,13 @@ from .forms import NewUserForm
 from django.contrib import messages
 from django.shortcuts import  render, redirect
 
+
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 
 def home(request):
     """Renders the home page."""
@@ -65,6 +67,7 @@ def register_request(request):
 
 @login_required
 def learn(request):
+     
      assert isinstance(request, HttpRequest)
      return render(
         request,

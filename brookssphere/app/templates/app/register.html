@@ -1,14 +1,16 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
 <h2>{{ title }}</h2>
 
 <h2>Sign up</h2>
 <form action="/register/" method="post">
+
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
+    {{ form|crispy }}
+    <input type="submit" value="Submit" class="btn btn-primary">
     <!--<button type="submit">Sign Up</button>-->
 </form>
 <!--<div class="row">

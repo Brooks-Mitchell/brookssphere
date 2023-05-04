@@ -3,7 +3,11 @@
 {% block content %}
 
 <div>
-    <h1>This is profile page</h1>
+    <h1>This is a profile page</h1>
+    <p>Account Name: {{ user.username }}</p>
+    <p>Profile Nickname: {{ user.profile.profile_name }}</p>
+    <p>Operations Performed: {{ user.profile.operations_performed }}</p>
+    <p>Date of Birth: {{ user.profile.date_of_birth }}</p>
 </div>
 
 {% endblock %}

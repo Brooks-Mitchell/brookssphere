@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'app',
     'Profiles.apps.ProfilesConfig',
     'learn',
+    'crispy_forms',
+    'crispy_bootstrap3',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Middleware framework
 # https://docs.djangoproject.com/en/2.1/topics/http/middleware/
