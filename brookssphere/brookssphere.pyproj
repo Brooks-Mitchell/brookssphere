@@ -71,6 +71,7 @@
     <Folder Include="Profiles\templates\Profiles\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\learn.html" />
     <Content Include="app\templates\app\register.html" />
     <Content Include="Profiles\templates\Profiles\index.html" />
     <Content Include="requirements.txt" />

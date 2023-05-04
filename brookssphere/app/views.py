@@ -61,3 +61,9 @@ def register_request(request):
         messages.error(request, "Invalid registration")
     form = NewUserForm()
     return render(request, 'app/register.html', {"form":form})
+
+def learn(request):
+     assert isinstance(request, HttpRequest)
+     return render(
+        request,
+        'app/index.html')
