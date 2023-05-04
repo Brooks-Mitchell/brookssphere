@@ -29,8 +29,8 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact',
-            'message':'Your contact page.',
+            'title':'Contact me',
+            'message':'',
             'year':datetime.now().year,
         }
     )
@@ -42,7 +42,7 @@ def about(request):
         request,
         'app/about.html',
         {
-            'title':'About',
+            'title':'About Me',
             'message':'Your application description page.',
             'year':datetime.now().year,
         }
@@ -66,4 +66,4 @@ def learn(request):
      assert isinstance(request, HttpRequest)
      return render(
         request,
-        'app/index.html')
+        'app/learn.html')

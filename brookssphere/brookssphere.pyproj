@@ -38,6 +38,13 @@
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="learn\admin.py" />
+    <Compile Include="learn\apps.py" />
+    <Compile Include="learn\migrations\__init__.py" />
+    <Compile Include="learn\models.py" />
+    <Compile Include="learn\tests.py" />
+    <Compile Include="learn\views.py" />
+    <Compile Include="learn\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="brookssphere\__init__.py" />
     <Compile Include="brookssphere\settings.py" />
@@ -65,6 +72,10 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="brookssphere\" />
+    <Folder Include="learn\" />
+    <Folder Include="learn\migrations\" />
+    <Folder Include="learn\templates\" />
+    <Folder Include="learn\templates\learn\" />
     <Folder Include="Profiles\" />
     <Folder Include="Profiles\migrations\" />
     <Folder Include="Profiles\templates\" />
@@ -73,6 +84,7 @@
   <ItemGroup>
     <Content Include="app\templates\app\learn.html" />
     <Content Include="app\templates\app\register.html" />
+    <Content Include="learn\templates\learn\index.html" />
     <Content Include="Profiles\templates\Profiles\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
