@@ -1,7 +1,7 @@
 
 from urllib import request
 from django.contrib.auth.forms import UserCreationForm
-from .forms import NewUserForm
+from .forms import NewUserForm, UserForm, ProfileForm
 from django.contrib import messages
 from django.shortcuts import  render, redirect
 
@@ -71,4 +71,4 @@ def learn(request):
      assert isinstance(request, HttpRequest)
      return render(
         request,
-        'app/learn.html')
+        'app/learn.html', {"user": request.user, "user_form": user_form, "profile_form": profile_form})
