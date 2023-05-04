@@ -10,7 +10,7 @@ from django.test import TestCase
 
 # TODO: Configure your database in settings.py and sync before running tests.
 
-class SimpleTest(TestCase):
+class LearnTest(TestCase):
     """Tests for the application views."""
 
     # Django requires an explicit setup() when running tests in PTVS
