@@ -67,8 +67,8 @@ def register_request(request):
 
 @login_required
 def learn(request):
-     
-     assert isinstance(request, HttpRequest)
-     return render(
-        request,
-        'app/learn.html', {"user": request.user, "user_form": user_form, "profile_form": profile_form})
+    user_form = UserForm(instance=request.user)
+    profile_form = ProfileForm(instance = request.user.profile)
+    assert isinstance(request, HttpRequest)
+    return render(
+        request, 'app/learn.html', {"user": request.user, "user_form": user_form, "profile_form": profile_form})

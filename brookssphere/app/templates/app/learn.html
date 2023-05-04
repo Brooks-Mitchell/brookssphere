@@ -1,6 +1,7 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 
 <div>
     <h1>This is a profile page</h1>
@@ -12,6 +13,9 @@
 
 <div>
     <h3>Edit your profile</h3>
+    {{ user_form|crispy }}
+    {{ profile_form|crispy }}
+
 </div>
 
 {% endblock %}
