@@ -108,7 +108,9 @@ samp {
 }
 
 pre {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
+    color: white;
+    background-color: #212120;
 }
 
 q {
