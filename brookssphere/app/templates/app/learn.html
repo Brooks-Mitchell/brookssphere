@@ -13,8 +13,13 @@
 
 <div>
     <h3>Edit your profile</h3>
-    {{ user_form|crispy }}
-    {{ profile_form|crispy }}
+    <form action="/learn/" method="post">
+        {% csrf_token %}
+        {{ user_form|crispy }}
+        {% csrf_token %}
+        {{ profile_form|crispy }}
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
 
 </div>
 

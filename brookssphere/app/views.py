@@ -67,6 +67,17 @@ def register_request(request):
 
 @login_required
 def learn(request):
+    if request.method == "POST":
+        user_form = UserForm(request.POST, instance = request.user)
+        profile_form = ProfileForm(request.POST, instance = request.user.profile)
+        if user_form.is_valid() & profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, ('Account Updated'))
+        else:
+            messages.error(request, ('POST request failed, database not updated'))
+
+
     user_form = UserForm(instance=request.user)
     profile_form = ProfileForm(instance = request.user.profile)
     assert isinstance(request, HttpRequest)
