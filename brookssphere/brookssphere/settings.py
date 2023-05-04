@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     'app',
-    #'Profiles',
     'Profiles.apps.ProfilesConfig',
+    'learn',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',

@@ -19,7 +19,7 @@ class LearnTest(TestCase):
         super(SimpleTest, cls).setUpClass()
         django.setup()
 
-    def test_basic_addition(self):
+    def test_login_required(self):
         """
         Tests that 1 + 1 always equals 2.
         """

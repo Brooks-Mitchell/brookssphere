@@ -9,6 +9,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     """Renders the home page."""
@@ -62,6 +63,7 @@ def register_request(request):
     form = NewUserForm()
     return render(request, 'app/register.html', {"form":form})
 
+@login_required
 def learn(request):
      assert isinstance(request, HttpRequest)
      return render(

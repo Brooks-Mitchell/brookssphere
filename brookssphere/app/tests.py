@@ -33,7 +33,7 @@ class ViewTest(TestCase):
         response = self.client.get('/about/')
         self.assertEqual(response.status_code, 200)
 
-    #def test_learn(self):
-    #    """Tests the about page."""
-    #    response = self.client.get('/learn')
-    #    self.assertContains(response, 'learn', 3, 200)
+    def test_learn(self):
+        """Tests the unauthorized access to learn page."""
+        response = self.client.get('/learn')
+        self.assertNotEqual(response.status_code, 200)
