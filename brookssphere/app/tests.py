@@ -6,6 +6,7 @@ when you run "manage.py test".
 import django
 from django.test import TestCase
 
+
 # TODO: Configure your database in settings.py and sync before running tests.
 
 class ViewTest(TestCase):
@@ -35,5 +36,9 @@ class ViewTest(TestCase):
 
     def test_learn(self):
         """Tests the unauthorized access to learn page."""
-        response = self.client.get('/learn')
+        response = self.client.get('/learn/')
         self.assertNotEqual(response.status_code, 200)
+
+
+
+
