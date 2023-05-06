@@ -16,12 +16,9 @@
         <p>
             This site is built with Python (Django Rest Framework) for the backend, JavaScript (React framework) for the frontend (with lots of pre-generated CSS),
             and a PostgreSQL Database.
+            
         </p>
-        <pre style="color: white; background-color: #212120;">
-            This
-            is a code
-            block example
-        </pre>
+        
     </div>
     <div class="col-m4d-"> 
         <h2>Different Levels</h2>
@@ -30,10 +27,39 @@
         <p>Level 2 goes a bit more in-depth. If you already have the basics down, this will drill into how functionality is implemented.  </p>
         <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-">
         <h2>What Happened When You Landed On This Home Page</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+        
+
+        <p>Example:
+        When you landed on this site Django resolved the URL with this:</p>
+
+        <pre style="color: white; background-color: #212120;">
+        urlpatterns = [
+        path('', views.home, name='home'),
+        ...
+        </pre>
+        <p> That empty quote at the start meaning the home page with nothing after - just brksmtchll.</p>
+        <p> The views.home called the function below that renders the HTML file at app/index.html</p>
+
+        <pre style="color: white; background-color: #212120;">
+            def home(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/index.html',
+        {
+            'title':'Home Page',
+            'year':datetime.now().year,
+            'meta_info': get_meta_string(request)
+        }
+    )
+        </pre>
+        <p> That 'meta_info' calls another function to see get meta-data from the system that requested the site:</p>
+        <pre style="color: white; background-color: #212120;">
+            {{ meta_info }}
+        </pre>
     </div>
 </div>
 

@@ -22,6 +22,7 @@ def home(request):
         {
             'title':'Home Page',
             'year':datetime.now().year,
+            'meta_info': get_meta_string(request)
         }
     )
 
@@ -83,3 +84,8 @@ def learn(request):
     assert isinstance(request, HttpRequest)
     return render(
         request, 'app/learn.html', {"user": request.user, "user_form": user_form, "profile_form": profile_form})
+
+
+def get_meta_string(request):
+    meta_info = request.META.get('HTTP_USER_AGENT' , '')
+    return meta_info
