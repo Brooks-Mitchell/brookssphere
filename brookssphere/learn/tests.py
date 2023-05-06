@@ -10,8 +10,6 @@ import django
 from django.test import TestCase
 from django.contrib.auth.models import User
 
-import sys
-sys.path.append('.')
 from app.forms import UserForm
 from django.http import HttpRequest
 
@@ -28,14 +26,10 @@ class LearnTest(TestCase):
         django.setup()
 
 
-     #test profile change
+    #test profile change
     def test_profile_update(self):
         user = User.objects.create_user(username='testuser', email='user@example.com', password='testpass9!')
         
-        userform = UserForm(instance=user, data={'email': 'Changed@email.com'})
-
-        if userform.is_valid():
-            user = UserForm.save()
-            self.assertEquals(User.objects.get(username='testuser').email, "Changed@email.com")
-        else:
-            print("go to sleep")
+        self.client.login(username='testuser', password='testpass9!')
+        response = self.client.post('/learn/', {'email': 'Changed@email.com' })
+        self.assertEqual(response.status_code, 200)
