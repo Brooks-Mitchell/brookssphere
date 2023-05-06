@@ -14,9 +14,8 @@
         <p>This site has no "real" functionality. When you login, you'll have the opportunity to save, retrieve, edit, and delete essentially random pieces 
         of information to the database. The only purpose is to show beginners what's happening behind the scenes. </p>
         <p>
-            This site is built with Python (Django Rest Framework) for the backend, JavaScript (React framework) for the frontend (with lots of pre-generated CSS),
-            and a PostgreSQL Database.
-            
+            This site is built with Python (Django Rest Framework) for the backend, and a PostgreSQL Database. The frontend is currently Django HTML templates and Bootstrap for 
+            MVP (minimum viable product) reasons, and will be upgraded to JavaScript React in the future.
         </p>
         
     </div>
@@ -32,29 +31,29 @@
         
 
         <p>Example:
-        When you landed on this site Django resolved the URL with this:</p>
+        When you landed on this site Django mapped the HTTP request to to proper URL with this:</p>
 
         <pre style="color: white; background-color: #212120;">
         urlpatterns = [
         path('', views.home, name='home'),
         ...
         </pre>
-        <p> That empty quote at the start meaning the home page with nothing after - just brksmtchll.</p>
+        <p> That empty quote at the start meaning the home page with nothing after - just brksmtchll.com.</p>
         <p> The views.home called the function below that renders the HTML file at app/index.html</p>
 
         <pre style="color: white; background-color: #212120;">
             def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/index.html',
-        {
-            'title':'Home Page',
-            'year':datetime.now().year,
-            'meta_info': get_meta_string(request)
-        }
-    )
+            """Renders the home page."""
+            assert isinstance(request, HttpRequest)
+            return render(
+                request,
+                'app/index.html',
+                {
+                    'title':'Home Page',
+                    'year':datetime.now().year,
+                    'meta_info': get_meta_string(request)
+                }
+            )
         </pre>
         <p> That 'meta_info' calls another function to see get meta-data from the system that requested the site:</p>
         <pre style="color: white; background-color: #212120;">
