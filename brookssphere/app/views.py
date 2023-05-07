@@ -82,6 +82,9 @@ def learn(request):
 
         if user_form.has_changed():
             post_data = user_form.changed_data
+            print(len(post_data))
+            request.user.profile.operations_performed += len(post_data)
+            request.user.profile.save()
             
 
 
