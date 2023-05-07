@@ -3,13 +3,28 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
+
+
 <div>
-    <h1>This is a profile page</h1>
+    <h1>This is a your page</h1>
     <p>Account Name: {{ user.username }}</p>
     <p>Profile Nickname: {{ user.profile.profile_name }}</p>
     <p>Operations Performed: {{ user.profile.operations_performed }}</p>
     <p>Date of Birth: {{ user.profile.date_of_birth }}</p>
 </div>
+
+{% if post_data is not None %}
+<div class="learn-output">
+    <p>The following form fields were changed:</p>
+    <pre style="color: white; background-color: #212120;">
+        {{ post_data }}
+    </pre>
+</div>
+
+{% else %}
+<div></div>
+
+{% endif %}
 
 <div>
     <h3>Edit your profile</h3>

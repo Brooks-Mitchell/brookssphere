@@ -68,6 +68,7 @@ def register_request(request):
 
 @login_required
 def learn(request):
+    post_data = None
     if request.method == "POST":
         user_form = UserForm(request.POST, instance = request.user)
         profile_form = ProfileForm(request.POST, instance = request.user.profile)
@@ -77,13 +78,25 @@ def learn(request):
             messages.success(request, ('Account Updated'))
         else:
             messages.error(request, ('POST request failed, database not updated'))
+            post_data = user_form.errors
+
+        if user_form.has_changed():
+            post_data = user_form.changed_data
+            
 
 
     user_form = UserForm(instance=request.user)
     profile_form = ProfileForm(instance = request.user.profile)
     assert isinstance(request, HttpRequest)
     return render(
-        request, 'app/learn.html', {"user": request.user, "user_form": user_form, "profile_form": profile_form})
+        request, 'app/learn.html', 
+        {
+            "user": request.user, 
+            "user_form": user_form, 
+            "profile_form": profile_form,
+            "post_data": post_data
+        }
+    )
 
 
 def get_meta_string(request):
