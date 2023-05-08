@@ -21,7 +21,6 @@ def home(request):
         'app/index.html',
         {
             'title':'Home Page',
-            'year':datetime.now().year,
             'meta_info': get_meta_string(request)
         }
     )
@@ -34,7 +33,6 @@ def about(request):
         'app/about.html',
         {
             'title':'About Me',
-            'year':datetime.now().year,
         }
     )
 
