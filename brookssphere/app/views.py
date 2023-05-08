@@ -45,7 +45,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("/")
+            return redirect("/learn/")
         messages.error(request, "Invalid registration")
     form = NewUserForm()
     return render(request, 'app/register.html', {"form":form})
@@ -63,17 +63,18 @@ def learn(request):
             user_form.save()
             profile_form.save()
             messages.success(request, ('Account Updated'))
+        
+            if user_form.has_changed():
+                changed_user_data = user_form.changed_data
+                increment_operations(request, changed_user_data)
+        
+            if profile_form.has_changed():
+                changed_profile_data = profile_form.changed_data
+                increment_operations(request, changed_profile_data)
+
         else:
             messages.error(request, ('POST request failed, database not updated'))
             post_data = user_form.errors
-
-        if user_form.has_changed():
-            changed_user_data = user_form.changed_data
-            increment_operations(request, changed_user_data)
-        
-        if profile_form.has_changed():
-            changed_profile_data = profile_form.changed_data
-            increment_operations(request, changed_profile_data)
             
 
 

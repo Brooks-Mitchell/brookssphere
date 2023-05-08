@@ -5,7 +5,15 @@
 <div class="jumbotron">
     <h1>Hi, I'm Brooks</h1>
     <p class="lead">I'm an aspiring software engineer. This is my self-describing portfolio. As you navigate through the site, you'll see what's going on behind the scenes.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Create an account to get started &raquo;</a></p>
+    
+    {% if not user.is_authenticated %}
+
+    <p><a href="{% url 'register' %}" class="btn btn-primary btn-large">Create an account to get started &raquo;</a></p>
+
+    {% else %}
+    <p><a href="{% url 'learn' %}" class="btn btn-primary btn-large">Start Learning &raquo;</a></p>
+
+    {% endif %}
 </div>
 
 <div class="row">
