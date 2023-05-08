@@ -2,23 +2,32 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+<h2>{{ title }}</h2>
 
+<div>
+    <p>This is my portfolio site</p>
+    <address>
+        Denver Metropolitan Area
+    </address>
 
-<p>I'm currently looking for an entry level position in backend software engineering</p>
-<address>
-    Denver Metropolitan Area
-</address>
+    <p>TODO: resume</p>
 
-<p>TODO: resume</p>
+    <p>Connect with me:</p>
+    <address>
+        <a href="https://www.linkedin.com/in/brooks-mitchell/">LinkedIn</a><br />
+        <a href="https://github.com/Brooks-Mitchell">GitHub</a>
+    </address>
+</div>
+<div>
+    <h2>About The Site</h2>
 
-<p>Connect with me:</p>
-<address>
-    <a href="https://www.linkedin.com/in/brooks-mitchell/">LinkedIn</a><br />
-    <a href="https://github.com/Brooks-Mitchell">GitHub</a>
-</address>
-
-<h2>About The Site</h2>
+    <h3>Roadmap</h3>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-warning">Password reset</li>
+        <li class="list-group-item">Implement JavaScript React frontend</li>
+        <li class="list-group-item">Redo profiles to allow for "connections" system</li>
+        <li class="list-group-item">Add complexity to learn page</li>
+    </ul>
+</div>
 
 {% endblock %}
