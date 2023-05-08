@@ -1,11 +1,11 @@
 
-from urllib import request
+
 from django.contrib.auth.forms import UserCreationForm
 from .forms import NewUserForm, UserForm, ProfileForm
 from django.contrib import messages
 from django.shortcuts import  render, redirect
 
-
+#from urllib import request
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
@@ -64,6 +64,7 @@ def learn(request):
             profile_form.save()
             messages.success(request, ('Account Updated'))
         
+            # TODO: move this into a function
             if user_form.has_changed():
                 changed_user_data = user_form.changed_data
                 increment_operations(request, changed_user_data)
@@ -94,7 +95,7 @@ def learn(request):
 
 
 def get_meta_string(request):
-    meta_info = request.META.get('HTTP_USER_AGENT' , '')
+    meta_info = request.META.get('HTTP_USER_AGENT' , '') #REMOTE_ADDR = IP address
     return meta_info
 
 def increment_operations(request, user_data = None, profile_data = None):
