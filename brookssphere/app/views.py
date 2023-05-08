@@ -67,7 +67,8 @@ def learn(request):
             post_data = user_form.errors
 
         if user_form.has_changed():
-            increment_operations(request, user_form.changed_data)
+            post_data = user_form.changed_data
+            increment_operations(request, post_data)
             
 
 
@@ -89,7 +90,7 @@ def get_meta_string(request):
     meta_info = request.META.get('HTTP_USER_AGENT' , '')
     return meta_info
 
-def increment_operations(request, changed_data):
-    post_data = changed_data
+def increment_operations(request, post_data):
     request.user.profile.operations_performed += len(post_data)
     request.user.profile.save()
+    return post_data
