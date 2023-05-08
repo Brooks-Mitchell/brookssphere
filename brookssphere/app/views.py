@@ -52,7 +52,10 @@ def register_request(request):
 
 @login_required
 def learn(request):
-    post_data = None
+
+    changed_profile_data = None
+    changed_user_data = None
+
     if request.method == "POST":
         user_form = UserForm(request.POST, instance = request.user)
         profile_form = ProfileForm(request.POST, instance = request.user.profile)
@@ -65,8 +68,12 @@ def learn(request):
             post_data = user_form.errors
 
         if user_form.has_changed():
-            post_data = user_form.changed_data
-            increment_operations(request, post_data)
+            changed_user_data = user_form.changed_data
+            increment_operations(request, changed_user_data)
+        
+        if profile_form.has_changed():
+            changed_profile_data = profile_form.changed_data
+            increment_operations(request, changed_profile_data)
             
 
 
@@ -79,7 +86,8 @@ def learn(request):
             "user": request.user, 
             "user_form": user_form, 
             "profile_form": profile_form,
-            "post_data": post_data
+            "changed_user_data": changed_user_data,
+            "changed_profile_data": changed_profile_data
         }
     )
 
@@ -88,7 +96,11 @@ def get_meta_string(request):
     meta_info = request.META.get('HTTP_USER_AGENT' , '')
     return meta_info
 
-def increment_operations(request, post_data):
-    request.user.profile.operations_performed += len(post_data)
+def increment_operations(request, user_data = None, profile_data = None):
+    try:
+        request.user.profile.operations_performed += len(user_data)
+        request.user.profile.operations_performed += len(profile_data)
+    except:
+        print("nonetype len error")
     request.user.profile.save()
-    return post_data
+ 

@@ -13,11 +13,24 @@
     <p>Operations Performed: {{ user.profile.operations_performed }}</p>
 </div>
 
-{% if post_data is not None %}
+{% if changed_user_data is not None %}
 <div class="learn-output">
-    <p>The following form fields were changed:</p>
+    <p>The following user account fields were changed:</p>
     <pre style="color: white; background-color: #212120;">
-        {{ post_data }}
+        {{ changed_user_data }}
+    </pre>
+</div>
+
+{% else %}
+<div></div>
+
+{% endif %}
+
+{% if changed_profile_data is not None %}
+<div class="learn-output">
+    <p>The following profile fields were changed:</p>
+    <pre style="color: white; background-color: #212120;">
+    {{ changed_profile_data }}
     </pre>
 </div>
 
@@ -38,4 +51,4 @@
 
 </div>
 
-{% endblock %}
+    {% endblock %}
