@@ -21,6 +21,42 @@
         <pre style="color: white; background-color: #212120;">
             {{ changed_user_data }}
         </pre>
+        <h3> When you hit the submit button, here's what happened: </h3>
+        <p>First, the frontend sent a POST request to the learn view that handles logic:</p>
+        <pre style="color: white; background-color: #212120;">
+            &lt;form action="/learn/" method="post">
+                { csrf_token }
+                { user_form|crispy }
+
+                &lt;input type="submit" value="Submit" class="btn btn-primary">
+           &lt;/form>
+        </pre>
+        <p>In the view that handles logic we have a condition that if the HTTP method is a POST request we will create a form object using our form models</p>
+        <pre style="color: white; background-color: #212120;">
+            def learn(request):
+                changed_user_data = None
+                if request.method == "POST":
+                    user_form = UserForm(request.POST, instance = request.user)
+        </pre>
+        <p>Django's' <code>ModelForm</code> generates forms based on model classes:</p>
+        <pre style="color: white; background-color: #212120;">
+            class UserForm(forms.ModelForm):
+                class Meta:
+                    model = User
+                    fields = ('username','first_name', 'last_name', 'email')
+        </pre>
+        <p> What is a Model?</p>
+        <p>A model is how Django represents database objects. Each model is a Python class that subclasses<code> django.db.models.Model</code> </p>
+        <p>Models make it easy to use Django's Object Relational Mapper (ORM), which allow us to create, retrieve, update, and retrieve data from the database without writing direct SQL</p>
+        <p>Here's the profile class model I created to extend the built-in User model that Django comes with:</p>
+        <pre style="color: white; background-color: #212120;">
+            class Profile(models.Model):
+                profile = models.OneToOneField(User, on_delete=models.CASCADE)
+                profile_name = models.CharField(max_length=80, default="name") 
+                date_of_birth = models.DateTimeField(default=datetime.datetime.now())
+                operations_performed = models.IntegerField(default = 0)
+        </pre>
+        <p>When the form is submitted, <code>user_form.save()</code> is called and Django figures out if the SQL should be a <code>CREATE</code> or <code>UPDATE</code> command.</p>
     </div>
 
     {% else %}
