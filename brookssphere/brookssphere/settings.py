@@ -1,14 +1,3 @@
-"""
-Django settings for brookssphere project.
-
-Based on 'django-admin startproject' using Django 2.1.2.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/2.1/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/2.1/ref/settings/
-"""
 
 import os
 import posixpath
@@ -17,7 +6,6 @@ import posixpath
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '40883c5c-0681-42f8-9a1d-5f4a597565d5'
@@ -28,7 +16,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application references
-# https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     'app',
     'Profiles.apps.ProfilesConfig',
@@ -46,7 +33,7 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Middleware framework
-# https://docs.djangoproject.com/en/2.1/topics/http/middleware/
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,7 +47,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'brookssphere.urls'
 
 # Template configuration
-# https://docs.djangoproject.com/en/2.1/topics/templates/
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,22 +65,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'brookssphere.wsgi.application'
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+
 DATABASES = {
-    'default' : {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'brookssphere',
-    'USER': 'postgres',
-    'PASSWORD': '2514',
-    'HOST': '127.0.0.1',
-    'PORT': '5432',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
-    
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,14 +95,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC' #America/Denver
+TIME_ZONE = 'America/Denver'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
