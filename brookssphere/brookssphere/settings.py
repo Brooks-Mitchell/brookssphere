@@ -13,7 +13,8 @@ SECRET_KEY = '40883c5c-0681-42f8-9a1d-5f4a597565d5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO NOT SAFE FOR PRODUCTION
+ALLOWED_HOSTS = ['*']
 
 # Application references
 INSTALLED_APPS = [
