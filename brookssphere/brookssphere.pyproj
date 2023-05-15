@@ -84,6 +84,10 @@
   <ItemGroup>
     <Content Include="app\templates\app\learn.html" />
     <Content Include="app\templates\app\register.html" />
+    <Content Include="docker-compose.yml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Dockerfile" />
     <Content Include="learn\templates\learn\index.html" />
     <Content Include="Profiles\templates\Profiles\index.html" />
     <Content Include="requirements.txt" />
